@@ -1,7 +1,12 @@
-const names = require('./names');
-const sayHi = require('./utils');
-const data = require('./alt')
-console.log(data);
-sayHi(names.john);
-sayHi('Susan');
-sayHi(names.peter);
+const {readFileSync,writeFileSync} = require('fs');
+
+const first = readFileSync('./content/first.txt','utf8');
+const second = readFileSync('./content/second.txt','utf8');
+
+console.log(first,second);
+
+writeFileSync(
+    './content/result-sync-txt', 
+    `Here is the resultL ${first}, ${second}`,{flag: 'a '} //flag 'a' is for append
+
+)
